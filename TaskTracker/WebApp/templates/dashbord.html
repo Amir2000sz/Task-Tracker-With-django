@@ -1,0 +1,28 @@
+{%extends "base.html"%}
+{%block content%} Dashboard {%endblock%}
+
+{% block content %}
+    <h1>Welcome to the Dashboard</h1>
+    <p>This is your dashboard page content.</p>
+    <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>family</th>
+            <th>number Of Tasks</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for user , task in users%}
+        <tr>
+            <td>{{ user.Name }}</td>
+            <td>{{ user.family }}</td>
+            <td>{{ task }}</td>
+            <td>{{ user.addedDate}}</td>
+            </tr>
+
+    </tbody>
+    </table>
+
+{% endblock %}
