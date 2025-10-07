@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+
+{%block title%}{{user.DisplayName}}{%endblock%}
+
+{%block content%}
+<h1>profile page</h1>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>Created At</th>
+            <th>Is Done </th>
+            <th>last Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for task in tasks%}
+        <tr>
+            <td>>{{ task.title }}</td>
+            <td>{{ task.addedDate|date:"Y/m/d H:i"}}</td>
+            <td>{{task.isDone}}</td>
+            <td>{{task.updatedDate|date:"Y/m/d H:i"}}</td>
+            <td>
+            <a href="{% url 'editTask' task.id %}">
+                <button>Edit</button> 
+            </a>
+
+            <a href="{% url 'deleteTask' task.id %}">
+                <button type="submit">Delete</button>
+            </a>
+            </td>
+            </tr>
+        {%endfor%}
+
+    </tbody>
+    </table>
+{%endblock%}

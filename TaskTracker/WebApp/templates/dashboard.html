@@ -1,5 +1,5 @@
 {%extends "base.html"%}
-{%block content%} Dashboard {%endblock%}
+{%block title%} Dashboard {%endblock%}
 
 {% block content %}
     <h1>Welcome to the Dashboard</h1>
@@ -8,7 +8,6 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>family</th>
             <th>number Of Tasks</th>
             <th>Created At</th>
         </tr>
@@ -16,11 +15,11 @@
     <tbody>
         {%for user , task in users%}
         <tr>
-            <td>{{ user.Name }}</td>
-            <td>{{ user.family }}</td>
-            <td>{{ task }}</td>
+            <td><a href="{% url 'displayUser' user.id %}">{{ user.DisplayName }}</a></td>
+            <td>{{ task.task_count }}</td>
             <td>{{ user.addedDate}}</td>
             </tr>
+        {%endfor%}
 
     </tbody>
     </table>

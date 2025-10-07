@@ -9,15 +9,15 @@ class UserCustom(models.Model):
     updatedDate = models.DateField(auto_now=True)
     password = models.CharField(null=False,blank=False)
     def __str__(self):
-        return self.Name +" "+ self.family
+        return self.DisplayName
 
 # Create your models here.
 class Task(models.Model):
     user = models.ForeignKey(UserCustom,on_delete=models.CASCADE,related_name="tasks")
     title = models.TextField()
     isDone = models.BooleanField(default=False)
-    addedDate = models.DateField(auto_now_add=True)
-    updatedDate = models.DateField(auto_now=True)
+    addedDate = models.DateTimeField(auto_now_add=True)
+    updatedDate = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
