@@ -1,27 +1,25 @@
-{%extends "base.html"%}
-{%block title%} Dashboard {%endblock%}
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Dashboard</h1>
-    <p>This is your dashboard page content.</p>
-    <table border="1" cellpadding="8" cellspacing="0">
+<h1>Welcome to the Dashboard</h1>
+
+<table>
     <thead>
         <tr>
             <th>Name</th>
-            <th>number Of Tasks</th>
+            <th>Number of Tasks</th>
             <th>Created At</th>
         </tr>
     </thead>
     <tbody>
-        {%for user , task in users%}
+        {% for user, task in users %}
         <tr>
             <td><a href="{% url 'displayUser' user.id %}">{{ user.DisplayName }}</a></td>
             <td>{{ task.task_count }}</td>
-            <td>{{ user.addedDate}}</td>
-            </tr>
-        {%endfor%}
-
+            <td>{{ user.addedDate|date:"Y/m/d"}}</td>
+        </tr>
+        {% endfor %}
     </tbody>
-    </table>
-    <button></button>
+</table>
 {% endblock %}

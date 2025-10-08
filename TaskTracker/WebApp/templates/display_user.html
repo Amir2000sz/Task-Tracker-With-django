@@ -1,37 +1,47 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
+{% block title %}{{ user.DisplayName }}{% endblock %}
 
-{%block title%}{{user.DisplayName}}{%endblock%}
+{% block content %}
+<h1>Profile Page</h1>
 
-{%block content%}
-<h1>profile page</h1>
-<table border="1" cellpadding="8" cellspacing="0">
+<table>
     <thead>
         <tr>
-            <th>title</th>
+            <th>Title</th>
             <th>Created At</th>
-            <th>Is Done </th>
-            <th>last Updated</th>
+            <th>Is Done</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        {%for task in tasks%}
+        {% for task in tasks %}
         <tr>
-            <td>>{{ task.title }}</td>
-            <td>{{ task.addedDate|date:"Y/m/d H:i"}}</td>
-            <td>{{task.isDone}}</td>
-            <td>{{task.updatedDate|date:"Y/m/d H:i"}}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.addedDate|date:"Y/m/d"}}</td>
             <td>
-            <a href="{% url 'editTask' task.id %}">
-                <button>Edit</button> 
-            </a>
-
-            <a href="{% url 'deleteTask' task.id %}">
-                <button type="submit">Delete</button>
-            </a>
+                {% if task.isDone %}
+                    <span class="badge done">Done</span>
+                {% else %}
+                    <span class="badge pending">Pending</span>
+                {% endif %}
             </td>
-            </tr>
-        {%endfor%}
-
+            <td>{{ task.updatedDate|date:"Y/m/d H:i" }}</td>
+            <td>
+                <a href="{% url 'editTask' task.id %}">
+                    <button>Edit</button>
+                </a>
+                <a href="{% url 'deleteTask' task.id %}">
+                    <button class="delete-btn" type="button">Delete</button>
+                </a>
+                
+            </td>
+        </tr>
+        {% endfor %}
+        
     </tbody>
-    </table>
-{%endblock%}
+</table>
+<a href="{% url 'addTask' user.id %}" class = "add-btn">
+                    <button class="add-btn" type="button">Add new note</button>
+                </a>
+{% endblock %}

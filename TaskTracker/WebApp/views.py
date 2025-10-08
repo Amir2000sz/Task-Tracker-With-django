@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Task,UserCustom
 from django.db.models import Count
 from django.http import Http404
-from .forms import EditTaskForm
+from .forms import EditTaskForm,AddTaskForm
 def getUsers(requset):
 
     users = UserCustom.objects.all()
@@ -42,3 +42,15 @@ def deleteTask(request, pk):
         return redirect(displayUser,pk = task.user.id)
     else:
         return render(request, "deleteTask.html", {"task": task})
+    
+def addTask(request,pk):
+    user = UserCustom(pk=pk)
+    if not user:
+        raise Http404("user not found")
+    if request.method == "POST":
+        form = AddTaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.user = user
+            task.save()
+            return render(request,"addTask.html",{"user":user})

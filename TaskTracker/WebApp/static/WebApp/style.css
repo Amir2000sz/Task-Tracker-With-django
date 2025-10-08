@@ -1,0 +1,185 @@
+/* ==============================
+   GLOBAL STYLE
+   ============================== */
+body {
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: #222;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+   CONTAINER
+   ============================== */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================
+   TABLE STYLE
+   ============================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e9f2ff;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* ==============================
+   BUTTONS
+   ============================== */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Delete button variant */
+button.delete-btn {
+    background-color: #dc3545;
+}
+
+button.delete-btn:hover {
+    background-color: #b02a37;
+}
+
+/* ==============================
+   STATUS BADGE (optional)
+   ============================== */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.badge.done {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.pending {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* ==============================
+   FORMS
+   ============================== */
+form {
+    margin-top: 20px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    button {
+        padding: 6px 10px;
+    }
+}
+p:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+p:has(input[type="checkbox"]) label {
+    order: 1;              /* keeps label after checkbox */
+    margin: 0;
+}
+
+p:has(input[type="checkbox"]) input[type="checkbox"] {
+    order: 2;
+    margin: 0;
+}
+.add-btn {
+    margin-top: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+}
